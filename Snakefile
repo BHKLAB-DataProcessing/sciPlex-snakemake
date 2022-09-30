@@ -30,7 +30,7 @@ rule get_SummarizedExp:
 
 rule extract_data:
     input:
-        S3.remote(prefix + 'GSE139944_RAW.tar')
+        S3.remote(prefix + 'download/GSE139944_RAW.tar')
     output:
         S3.remote(prefix + 'data/GSM4150376_sciPlex1_cds.RDS'),
         S3.remote(prefix + 'data/GSM4150377_sciPlex2_cds.RDS'),
@@ -46,7 +46,7 @@ rule extract_data:
 
 rule download_data:
     output:
-        S3.remote(prefix + 'GSE139944_RAW.tar')
+        S3.remote(prefix + 'download/GSE139944_RAW.tar')
     shell:
         """
         Rscript scripts/download_GSE139944.R \
